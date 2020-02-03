@@ -1,4 +1,4 @@
-git commit -am 'typos commit'
-git checkout dev
-git commit -am 'merging dev into typos'
-git merge typos
+git commit -am 'features inital commit'
+git checkout features
+git commit -am 'merging dev into features'
+git merge dev
