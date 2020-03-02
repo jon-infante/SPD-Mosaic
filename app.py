@@ -22,8 +22,8 @@ for label in response.label_annotations:
     print(f'{label.description} ({label.score*100.:.2f}%)')
 
 
-curl -v -s -H "Content-Type: application/json" https://vision.googleapis.com/v1/images:annotate\?key\=AIzaSyDgxl6eCbmb-lAPrnd1NTcsCTTMQHd4_aU --data-binary @google_vision.json > results
-Retrieves raw scores
+# curl -v -s -H "Content-Type: application/json" https://vision.googleapis.com/v1/images:annotate\?key\=AIzaSyDgxl6eCbmb-lAPrnd1NTcsCTTMQHd4_aU --data-binary @google_vision.json > results
+# Retrieves raw scores
 app = Flask(__name__)
 
 
