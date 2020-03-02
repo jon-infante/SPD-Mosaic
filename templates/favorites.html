@@ -30,6 +30,7 @@
   {% block content %}
 
       <div class="form">
+        <h3>Upload:</h3>
         <form action='/'>
             <input id="search-bar" autocomplete="off" class="search-bar" type="search" name="user_input" placeholder="Enter image address"/>
           </form>
@@ -49,13 +50,15 @@
             <div class="title">
                 <h5 class="card-title">{{ stuff }}</h5>
             </div>
-            <div class="textbox" aria-placeholder="recipe / ingredients">
+            <hr class="top">
+            <div class="recipe-textbox" aria-placeholder="recipe / ingredients">
                 <p class="card-text">{% for instruction in instructions %}
                           {{ instruction['step'] }}
                       {% endfor %}
                 </p>
             </div>
-            <div class="textbox" aria-placeholder="recipe / ingredients">
+            <hr clas="bottom">
+            <div class="ingredients-textbox" aria-placeholder="recipe / ingredients">
                 <p class="card-text">{% for ingredient in ingredients %}
                           {{ ingredient['original'] }} </br>
                       {% endfor %}

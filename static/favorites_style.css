@@ -21,6 +21,7 @@ nav{
     /* display:block; */
     position: relative;
     display: inline-block;
+    
 }
 
 .dropbtn {
@@ -30,7 +31,7 @@ nav{
 }
 
 .dropbtn:hover {
-    color:rgb(165, 97, 42);
+    color: antiquewhite;
 }
 
 
@@ -39,17 +40,18 @@ display: none;
 
 position: absolute;
 padding: 20px 20px 20px 400px;
-border: 0px;
+border: 2px solid;
+border-color: rgba(112, 128, 144, 0.288);
 margin: 0px;
+height: 1100px;
 
 right: 0;
-background-color: rgb(228, 203, 182);
-min-width: 10px;
+background-color: antiquewhite;
 z-index: 1;
 } 
   
 .dropdown-content a {
-color: rgb(165, 97, 42);
+color: black;
 padding: 20px 20px 20px 20px;
 text-decoration: none;
 display: block;
@@ -57,7 +59,13 @@ font-size: 5em;
 } 
 
 .dropdown-content a:nth-child(1) {
-    padding: 100px 10px 10px 10px;
+    padding: 100px 10px 50px 10px;
+    border-bottom: 2px solid;
+    border-color: slategray;
+}
+
+.dropdown-content a:nth-child(2) {
+    padding: 50px 10px 10px 10px;
 }
 
 .dropdown-content a:nth-child(3) {
@@ -72,6 +80,7 @@ font-size: 5em;
     align-items: center;
     text-align: center;
     justify-content: center;
+    color: antiquewhite;
 
 
 }
@@ -79,29 +88,59 @@ font-size: 5em;
 
 /* ********** BODY *********** */
 body {
-    background-color: rgb(252, 235, 220);
+    background-color:white;
     font-family: Arial, Helvetica, sans-serif;
     margin: 20px;
 
 }
 
 main {
-    background-color: rgba(230, 179, 136, 0.808);
+    background-color: antiquewhite;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: space-evenly;
-    border: 2px solid;
+    border-radius: 3px;
+    border-color: slategray;
     height: 1000px;
 
 }
 
+
 .form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     border: 2px solid;
+    border-radius: 5px;
+    border-color: slategray;
     text-align: center;
-    height: 60px;
-    width: 300px;
+    height: 50px;
+    width: 400px;
 }
 
+.form > h3 {
+    font-size: 26px;
+}
+
+.search-bar {
+    height: 40px;
+}
+
+.text-box {
+    height: 40px;
+}
+
+.button {
+    height: 30px;
+    border-radius: 4px;
+    background-color: lightgray;
+    font-size: 1em;
+}
+
+.button:hover {
+    background-color: antiquewhite;
+    border-color: white;
+}
 
 
 /* *************** CARD *********** */
@@ -111,6 +150,7 @@ main {
     flex-direction: column;
     align-items: center;
     border: 3px solid;
+    border-color: slategray;
     height: 420px;
     width: 300px;
     margin: 10px;
@@ -118,9 +158,11 @@ main {
 }
 
 .imagebox {
-    background-color: rgb(94, 94, 94);
+    background-color: rgba(112, 128, 144, 0.479);
     justify-content: center;
     border: 2px solid;
+    border-color: slategray;
+
     height: 210px;
     width: 280px;
     margin: 5px;
@@ -129,7 +171,8 @@ main {
 
 .title {
     background-color: None;
-    border: 1px solid;
+    border-bottom: 1px solid;
+    border-color: slategray;
     color: black;
     text-align: left;
     text-decoration: none;
@@ -138,9 +181,15 @@ main {
 
 }
 
-.textbox {
+.card-title {
+    padding: 0px;
+}
+
+.recipe-textbox {
     background-color: None;
-    border: 1px solid;
+    border-bottom: 1px solid;
+    border-color: slategray;
+
     color: black;
     text-align: left;
     justify-content: center; 
@@ -150,3 +199,15 @@ main {
     
 }
 
+
+.ingredients-textbox {
+    background-color: None;
+
+    color: black;
+    text-align: left;
+    justify-content: center; 
+    height: 140px;
+    width: 280px;
+    margin: 5px;
+    
+}
