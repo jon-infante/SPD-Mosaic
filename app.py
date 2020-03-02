@@ -82,3 +82,18 @@ ingredients = s_information.json()['extendedIngredients']
 def home_page():
     return render_template("base.html", stuff=food_item, instructions=instructions,
     ingredients=ingredients)
+
+@app.route('/recipes', methods=['POST'])
+def recipe_submit():
+        recipe = {
+        'name': request.form.get('name'),
+        'description': request.form.get('description'),
+        'difficulty': request.form.get('difficulty'),
+        }
+        print(recipe)
+        recipe_id = products.insert_one(recipe).inserted_id
+        return redirect(url_for('home_page', recipe_id=recipe_id))
+
+@app.route('/recipes/new')
+def recipes_new():
+    return render_template('new.html', recipe={})
