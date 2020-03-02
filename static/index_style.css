@@ -1,7 +1,7 @@
 
 
 body {
-    background-color: rgba(230, 179, 136, 0.808);
+    background-color: white;
     font-family: Arial, Helvetica, sans-serif;
 
     display: flex;
@@ -10,7 +10,7 @@ body {
 }
 
 .main-title {
-    background-color: rgb(252, 235, 220);
+    background-color: antiquewhite;
     display: flex;
     flex-direction: column;
     justify-content: center;

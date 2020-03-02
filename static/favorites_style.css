@@ -31,7 +31,7 @@ nav{
 }
 
 .dropbtn:hover {
-    color: antiquewhite;
+    color: white;
 }
 
 
@@ -88,14 +88,14 @@ font-size: 5em;
 
 /* ********** BODY *********** */
 body {
-    background-color:white;
+    background-color: antiquewhite;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 20px;
+    margin: 40px;
 
 }
 
 main {
-    background-color: antiquewhite;
+    background-color: white;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: space-evenly;
@@ -107,10 +107,10 @@ main {
 
 
 .form {
-    display: flex;
+    display: block;
     justify-content: space-evenly;
     align-items: center;
-    border: 2px solid;
+    
     border-radius: 5px;
     border-color: slategray;
     text-align: center;
@@ -118,15 +118,9 @@ main {
     width: 400px;
 }
 
-.form > h3 {
-    font-size: 26px;
-}
-
-.search-bar {
-    height: 40px;
-}
-
-.text-box {
+.search {
+    display: flex;
+    align-items: center;
     height: 40px;
 }
 
@@ -138,14 +132,13 @@ main {
 }
 
 .button:hover {
-    background-color: antiquewhite;
-    border-color: white;
+    background-color: white;
 }
 
 
 /* *************** CARD *********** */
 .outerbox {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(250, 235, 215, 0.315);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -187,9 +180,6 @@ main {
 
 .recipe-textbox {
     background-color: None;
-    border-bottom: 1px solid;
-    border-color: slategray;
-
     color: black;
     text-align: left;
     justify-content: center; 
@@ -202,6 +192,8 @@ main {
 
 .ingredients-textbox {
     background-color: None;
+    border-bottom: 1px solid;
+    border-color: slategray;
 
     color: black;
     text-align: left;
