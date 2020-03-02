@@ -1,12 +1,26 @@
 from flask import Flask, render_template
 from google.cloud import vision
 import os
+import io
 import requests
 import json
 from dotenv import load_dotenv
+from pymongo import MongoClient
+
+# Imports the Google Cloud client library
+
+client = MongoClient()
+db = client.Playlister
+recipes = db.recipes
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
+
+from google.cloud.vision import types
+from flask import Flask, render_template, request
+from flask_uploads import UploadSet, configure_uploads, IMAGES
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="env/key.json"
+
 #
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="env/key.json"
 # image_uri = 'gs://cloud-samples-data/vision/using_curl/shanghai.jpeg'
@@ -78,7 +92,70 @@ s_information = requests.get(url_s3, params=params_s3)
 ingredients = s_information.json()['extendedIngredients']
 # print(ingredients)
 
+
 @app.route('/')
+def landing_page():
+    return render_template('index.html')
+
+
+@app.route('/food')
 def home_page():
-    return render_template("favorites.html", stuff=food_item, instructions=instructions,
+    return render_template('favorites.html', stuff=food_item, instructions=instructions,
     ingredients=ingredients)
+
+
+@app.route('/recipes', methods=['POST'])
+def recipe_submit():
+        recipe = {
+        'name': request.form.get('name'),
+        'description': request.form.get('description'),
+        'difficulty': request.form.get('difficulty'),
+        }
+        print(recipe)
+        recipe_id = products.insert_one(recipe).inserted_id
+        return redirect(url_for('home_page', recipe_id=recipe_id, recipes=recipes.find()))
+
+@app.route('/recipes/new')
+def recipes_new():
+    return render_template('new.html', recipe={})
+
+
+
+
+photos = UploadSet('photos', IMAGES)
+
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
+configure_uploads(app, photos)
+
+def detect_labels(path):
+    """Detects labels in the file."""
+    client = vision.ImageAnnotatorClient()
+
+    with io.open(path, 'rb') as image_file:
+        content = image_file.read()
+
+    image = types.Image(content=content)
+
+    response = client.label_detection(image=image)
+    return response.label_annotations
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST' and 'photo' in request.files:
+
+        filename = photos.save(request.files['photo'])
+        full_path = os.path.join(app.config['UPLOADED_PHOTOS_DEST'], filename)
+
+        labels = detect_labels(full_path)
+
+        predictions = []
+
+        for label in labels:
+                predictions.append(label.description)  #make a list as print would only show up in terminal
+
+        prediction_text = ", ".join(predictions)  #make it a little more pretty with ','
+    else:
+        prediction_text = "nothing to predict.."
+
+    return render_template('upload.html', prediction_text=prediction_text)
+
