@@ -4,6 +4,11 @@ import os
 import requests
 import json
 from dotenv import load_dotenv
+from pymongo import MongoClient
+
+client = MongoClient()
+db = client.Playlister
+recipes = db.recipes
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
@@ -49,7 +54,7 @@ labels = ['Food', 'Junk food', 'Dish', 'Cuisine', 'Fast food', 'Ingredient', 'Me
 if r.json()['responses'][0]['labelAnnotations'][0]['description'] not in labels:
     food_item = r.json()['responses'][0]['labelAnnotations'][0]['description']
 
-# print(food_item)
+print(food_item)
 
 ##### SPOONACULAR API #####
 url_s = 'https://api.spoonacular.com/recipes/findByIngredients'
@@ -80,8 +85,9 @@ ingredients = s_information.json()['extendedIngredients']
 
 @app.route('/')
 def home_page():
-    return render_template("base.html", stuff=food_item, instructions=instructions,
+    return render_template("favorites.html", stuff=food_item, instructions=instructions,
     ingredients=ingredients)
+
 
 @app.route('/recipes', methods=['POST'])
 def recipe_submit():

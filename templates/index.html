@@ -1,18 +1,38 @@
-<h1>Google Cloud Platform - Food Detection Sample</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipEat</title>
+  <link href="/static/index_style.css" rel="stylesheet">
 
-<p>This Python Flask application demonstrates App Engine Flexible, Google Cloud
-Storage, Datastore, and the Cloud Vision API.</p>
+</head>
+<body>
 
-<br>
+  <div class="main-title">
+    <div class="title"
+      <h1>Google Cloud Platform - Food Detection Sample</h1>
+    </div>
+    <div class="title-text">
+      <p>This Python Flask application demonstrates App Engine Flexible, Google Cloud
+      Storage, Datastore, and the Cloud Vision API.</p>
+    </div>
+    <div class="description">
+      <ol>
+        <li>Upload an image of a dish you want to try.</li> 
+        <li>RecipEat will curate its recipe for you in seconds.</li>
+        <li>Save to your favorites (optional)</li>
+      </ol>
+    </div>
+  </div>
 
-<html>
-  <body>
+  <div class="upload">
     <form action="upload_photo" method="POST" enctype="multipart/form-data">
       Upload File: <input type="file" name="file"><br>
       <input type="submit" name="submit" value="Submit">
     </form>
-    {% for things in stuff %}
-      <li>{{ things }}</li>
-    {% endfor %}
-  </body>
+    
+  </div>
+  
+</body>
 </html>
