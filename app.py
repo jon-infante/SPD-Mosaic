@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
+GOOGLE_APPLICATION_CREDENTIALS="keyFile.json"
 #
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="env/key.json"
 # image_uri = 'gs://cloud-samples-data/vision/using_curl/shanghai.jpeg'
@@ -105,6 +106,3 @@ def recipe():
         json_recipes = json.loads(r.content)
         recipes = json_recipes['results']
         return render_template("recipe.html", recipes=recipes)
-
-
-
