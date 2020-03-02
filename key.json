@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "recipeat",
+  "private_key_id": "b3dac060d7fcb55274cccf7ffa14b0a2873479e1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDg25uYf2rO6Fvy\nKhx7pP3XWkQPTieeNwIVZROnkvJ7ULfpLTDgoCukBLyf9cZ3V5TSCg5vz8Bz1BK6\nHK5QCiBtn+N8cj6TS1Nob/WbZNPkMkVgJ70v4uZXVFiSOWweL3L6n+38zxoRrNmT\nWt7ASRUZYk2vtQMCsmw+jO2rNc4hiTmXFQC07r1YEkG4IT+TJCGKJb/vtvq4ELf8\n3etuMZDg7h5N/c3uWC8pmQb2NNP/pkLLghfgKFkZN3yEiTiOKuVZxUwjx+uYjjT7\ndezXDTPeGnzwjO5ZcL99LiRK6Uoi+gEcLndZATmmif7M1DqGYh1i0vntJpmHGXLL\n893yWqOhAgMBAAECggEAFLC0bKf1zaflFP+BuzFbf6pBRrjB7b2hShNwx2u+tvDe\nmVzEiXjHhzo92oiwnEjha2HMQgbXbjkKh5hNxFToNroegjQXdLF60Wpy6rtwgWgM\nSOyjLIG4APtkgoD45T6nuW7HpOpwG0YAx7217zLSV5F7dUJmTmRZUDiiwm0rJFvq\nT+zbihmGsQa21EC0ARjxGiAV5bXY5tdBXxPbr6O2okv65l8W1mBlUhZEpvnOdF0p\nrfFgALNNLsl9jeDvQ2hMI9soJVxAioNztdW5aMeMwWyuljYngeKUbTOzg7+lY/3T\naNXG7QjSR7lXQeNASPX6TrmUE9S8CFkXjFl8fmt9SQKBgQD6nzfxKJmYJ9DZqS0d\nAuJo5kmraEpYcCYWhFYrWs9rDvAkW3kTDwoaBcWFCCo+Id2uqIJaL2CRNhJ6Uw/U\nlsqVY9Gf9c++PW3ogRm0oJKpZ0AB37CVHu5hHn2qnM24ztPxlc8KzEyzcjA0vQfN\nohAFLnuH4MYO5lRWdBRcCQgNuQKBgQDlrtrvMO5iPLlx6JuUkiMzWW2xrZrI6iZc\nqeL5JZrR4Haa87EROHnDKpU3IU8UN31c6GW3u8Xpnz8JyX00gw+m6U32Sfs3dtDM\nX3hGbxm2VX0v7OufNArSZliydiIvK0pQNuvzEOZptPKoq0RhohcQieL/hHGnxd9w\nxYu0KDR5KQKBgF1ofkcppKVrIZIeVawcaRpDym1SP3NayTdXN26NOAVk2egTF7sc\nvd0ZDZcZhfUGVkNEluDaC5nTl2t0DdBkKzkmrPh7e2QiLRadF2GU/1SYIOkR4BSU\nJLCZ1qiCLMKWg7Pk6/fQUT4IbyMY2RGxN1tXCb+I7QicnA5k0TnEO/YxAoGAYF3p\n29uy2SLTR9iplj9uZ3gJDzhgrhWX/N8GrTQ67f34pXDDhQ8l/13Zd2URUdEqVxXm\nv50YH7pB77BLSQIISiavIDvQHGhMmMMhqqOorRjXSolkHsruE3L/mfj4xMOsDVXN\nz5Dyq71Q5rXdHf2tIbJIvJ5sNVFPO3iW8gLAaWkCgYEAqrfqVoDZc8UuXOWveR6F\nheTPqjudSNqv3sFg50TquZAQPJubCHNw/ECHVLzDCIaPKYYIZypbIOHsy80G6pJB\nRo8E076/hPOFym+mnKfPneXPRYiiXNkYUyNbQ3Qd68M/hNz+g9IQ3wOi7ZZws20T\nLAOp32Kaicg4C2cIZMhQeCE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-vision-sa@recipeat.iam.gserviceaccount.com",
+  "client_id": "116185170673807357257",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-vision-sa%40recipeat.iam.gserviceaccount.com"
+}
