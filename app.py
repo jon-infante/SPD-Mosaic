@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
-#
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="key.json"
 image_uri = 'gs://cloud-samples-data/vision/using_curl/shanghai.jpeg'
 client = vision.ImageAnnotatorClient()
