@@ -84,27 +84,3 @@ def home_page():
     ingredients=ingredients)
 
 
-@app.route('/recipe')
-def recipe():
-
-
-    search_term = request.args.get('user_input')
-
-
-    params = {
-        'query': search_term,
-        'apiKey': SPOONACULAR_API_KEY,
-        'number': 6
-    }
-
-    url = "https://api.spoonacular.com/recipes/search"
-
-
-    r = requests.get(url, params=params)
-    if r.status_code == 200:
-        json_recipes = json.loads(r.content)
-        recipes = json_recipes['results']
-        return render_template("recipe.html", recipes=recipes)
-
-
-

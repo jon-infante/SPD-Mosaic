@@ -29,15 +29,13 @@
     
   {% block content %}
 
-    <div class="form">
-      <form action='/'>
-          <input id="search-bar" autocomplete="off" class="search-bar" type="search" name="user_input" placeholder="Enter image address"/>
-        </form>
-      <form action='/'>
-          <button class="button" type="submit" name="button" value="getting_recipes">Get Recipes</button>
-      </form>
-    </div>
-    <br>
+  <div class="form">
+    <form action="upload_photo" method="POST" enctype="multipart/form-data">
+      Upload File: <input type="file" name="file"><br>
+      <input type="submit" name="submit" value="Submit">
+    </form>
+  </div>
+  <br>
 
 
     <div class="outerbox">
