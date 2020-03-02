@@ -4,6 +4,11 @@ import os
 import requests
 import json
 from dotenv import load_dotenv
+from pymongo import MongoClient
+
+client = MongoClient()
+db = client.Playlister
+recipes = db.recipes
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
