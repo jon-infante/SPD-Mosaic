@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from google.cloud import vision
 import os
+import io
 import requests
 import json
 from dotenv import load_dotenv
@@ -83,10 +84,18 @@ s_information = requests.get(url_s3, params=params_s3)
 ingredients = s_information.json()['extendedIngredients']
 # print(ingredients)
 
+
 @app.route('/')
+def landing_page():
+    return render_template("index.html")
+
+
+@app.route('/food')
 def home_page():
     return render_template('favorites.html', stuff=food_item, instructions=instructions,
     ingredients=ingredients)
+
+
 @app.route('/recipes', methods=['POST'])
 def recipe_submit():
         recipe = {
