@@ -35,7 +35,7 @@
 </form>
   <br>
 
-
+  <main>
     <div class="outerbox">
       <div class="imagebox">
           <!-- fig caption ??  -->
@@ -44,19 +44,20 @@
       <div class="title">
           <h5 class="card-title">{{ food_item }}</h5>
       </div>
-      <div class="textbox" aria-placeholder="recipe / ingredients">
+      <div class="ingredients-textbox" aria-placeholder="recipe / ingredients">
           <p class="card-text">{% for instruction in instructions %}
                     {{ instruction['step'] }}
                 {% endfor %}
           </p>
       </div>
-      <div class="textbox" aria-placeholder="recipe / ingredients">
+      <div class="recipe-textbox" aria-placeholder="recipe / ingredients">
           <p class="card-text">{% for ingredient in ingredients %}
                     {{ ingredient['original'] }} </br>
                 {% endfor %}
           </p>
       </div>
   </div>
+  </main>
     {% endblock %}
 
   </body>
