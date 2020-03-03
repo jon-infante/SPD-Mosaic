@@ -63,38 +63,6 @@ if r.json()['responses'][0]['labelAnnotations'][0]['description'] not in labels:
 
 print(food_item)
 '''
-
-@app.route('/')
-def landing_page():
-    return render_template('index.html')
-
-
-@app.route('/food')
-def home_page():
-    return render_template('favorites.html', stuff=food_item, instructions=instructions,
-    ingredients=ingredients)
-
-
-@app.route('/recipes', methods=['POST'])
-def recipe_submit():
-        recipe = {
-        'name': request.form.get('name'),
-        'description': request.form.get('description'),
-        'difficulty': request.form.get('difficulty'),
-        }
-        print(recipe)
-        recipe_id = products.insert_one(recipe).inserted_id
-        return redirect(url_for('home_page', recipe_id=recipe_id, recipes=recipes.find()))
-
-@app.route('/recipes/new')
-def recipes_new():
-    return render_template('new.html', recipe={})
-<<<<<<< HEAD
-=======
-
-
-=======
-'''
 app = Flask(__name__)
 
 
