@@ -2,26 +2,27 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Travel</title>
+  <title>RecipEat</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'><link rel="stylesheet" href="static/style.css">
+<link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'><link rel="stylesheet" href= "{{ url_for('static',filename='styles/style.css') }}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
 <body>
+  {% block content %}
 <!-- partial:index.partial.html -->
 <nav class="flex-nav">
   <div class="container">
     <div class="grid">
       <div class="column-xs-9 column-md-8">
-        <p id="logo">Japan<span id="highlight">.</span></p>
+        <p id="logo">RecipEat<span id="highlight">.</span></p>
       </div>
       <div class="column-xs-3 column-md-4">
         <a href="#" class="toggle-nav">Menu <i class="ion-navicon-round"></i></a>
         <ul>
-          <li><a href="#">About</a></li>
+          <li><a href="/upload">About</a></li>
           <li><a href="#">Discover</a></li>
-          <li><a href="#">Plan Your Trip</a></li>
+          <li><a href="#">Plan Your Meals</a></li>
         </ul>
       </div>
     </div>
@@ -37,19 +38,19 @@
               <div class="column-xs-12 column-md-2 hide-mobile">
                 <div class="intro">
                   <a href="#">
-                    <h1 class="title"><span class="underline">Explore Tokyo</span></h1>
+                    <h1 class="title"><span class="underline">Explore Food</span></h1>
                   </a>
                 </div>
               </div>
               <div class="column-xs-12 column-md-10">
                 <div class="image-holder">
-                  <img src="https://source.unsplash.com/cddaZDt6uRw">
+                  <img src="https://www.nationalgeographic.com/content/dam/travel/2017-digital/destination-hubs/01_Japan.adapt.1900.1.jpg">
                 </div>
                 <div class="grid">
                   <div class="column-xs-12 column-md-9">
                     <div class="intro show-mobile">
                       <a href="#">
-                        <h1 class="title"><span class="underline">Explore Tokyo</span></h1>
+                        <h1 class="title"><span class="underline">Explore Simplicity</span></h1>
                       </a>
                     </div>
                     <p class="description">Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples.</p>
@@ -63,19 +64,19 @@
               <div class="column-xs-12 column-md-2 hide-mobile">
                 <div class="intro">
                   <a href="#">
-                    <h1 class="title"><span class="underline">Explore Kyoto</span></h1>
+                    <h1 class="title"><span class="underline">Explore Things</span></h1>
                   </a>
                 </div>
               </div>
               <div class="column-xs-12 column-md-10">
                 <div class="image-holder">
-                  <img src="https://source.unsplash.com/Pz3EHf-KJfc">
+                  <img src="https://www.nationalgeographic.com/content/dam/travel/2017-digital/destination-hubs/01_Japan.adapt.1900.1.jpg">
                 </div>
                 <div class="grid">
                   <div class="column-xs-12 column-md-9">
                     <div class="intro show-mobile">
                       <a href="#">
-                        <h1 class="title"><span class="underline">Explore Kyoto</span></h1>
+                        <h1 class="title"><span class="underline">Explore Stuff</span></h1>
                       </a>
                     </div>
                     <p class="description">Kyoto is famous for its numerous classical Buddhist temples, gardens, imperial palaces, Shinto shrines and traditional wooden houses.</p>
@@ -89,19 +90,19 @@
               <div class="column-xs-12 column-md-2 hide-mobile">
                 <div class="intro">
                   <a href="#">
-                     <h1 class="title"><span class="underline">Explore Osaka</span></h1>
+                     <h1 class="title"><span class="underline">Explore What?</span></h1>
                   </a>
                 </div>
               </div>
               <div class="column-xs-12 column-md-10">
                 <div class="image-holder">
-                  <img src="https://source.unsplash.com/peYW3VwICpE">
+                  <img src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_412,c_fill,g_auto,h_232,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606121226-japan---travel-destination---shutterstock-230107657.jpg">
                 </div>
                 <div class="grid">
                   <div class="column-xs-12 column-md-9">
                     <div class="intro show-mobile">
                       <a href="#">
-                        <h1 class="title"><span class="underline">Explore Osaka</span></h1>
+                        <h1 class="title"><span class="underline">Explore Yes</span></h1>
                       </a>
                     </div>
                     <p class="description">Osaka is a large port city and commercial center known for its modern architecture, nightlife and hearty street food.</p>
@@ -121,7 +122,7 @@
               </div>
               <div class="column-xs-12 column-md-10">
                 <div class="image-holder">
-                  <img src="https://source.unsplash.com/VmeOZQjTVGE">
+                  <img src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_412,c_fill,g_auto,h_232,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606121226-japan---travel-destination---shutterstock-230107657.jpg">
                 </div>
                 <div class="grid">
                   <div class="column-xs-12 column-md-9">
@@ -153,7 +154,11 @@
   </div>
 </main>
 <!-- partial -->
-  <script  src="static/script.js"></script>
+<script type="text/javascript"
+src="{{ url_for('static', filename='js/script.js') }}">
 
+</script>
+
+{% endblock %}
 </body>
 </html>
