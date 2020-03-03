@@ -1,8 +1,31 @@
 {% extends "favorites.html" %}
 
+
+
 {% block content %}
-  <form action="new-page" method="post">
-    {{ context }}
+<form method= 'POST' action='/recipes'>
+    <fieldset>
+      <legend>New Recipe</legend>
+      <!-- TITLE -->
+      <div class='form-group'>
+          <label for='name'>Recipe Name:</label><br>
+          <input class='form-control' id='name' type='text' name='name'/>
+      </div>
+  
+      <!-- DESCRIPTION -->
+      <div class='form-group'>
+          <label for='description'>Recipe Description:</label><br>
+          <input class='form-control' id='description' type='text' name='description' />
+      </div>
+  
+  
+    
+      <!-- DIFFICULTY -->
+      <div class='form-group'>
+          <label for='difficulty'>Difficulty:</label><br>
+          <input class='form-control' id='difficulty' type='text' name='difficulty' />
+      </div>
+  </fieldset>
     <input type="submit" value="Submit">
   </form>
 
