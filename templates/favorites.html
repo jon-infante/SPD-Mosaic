@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RecipEats</title>
+    <link href="/static/favorites_style.css" rel="stylesheet">
+
+    <!-- Favorites page displays cards of all the favorited recipes -->
+  </head>
+
+  <body>
+
+    <nav>
+      <div class="page_title">
+        <div>Favorites</div>
+      </div>
+
+      <div class='dropdown'>
+          <button class='dropbtn'>menu</button>
+          <div class="dropdown-content">
+              <a href="/favorites">Favorites</a>
+              <a href="/upload">Upload</a>
+              <a href="/settings">Settings</a>
+          </div>
+      </div>
+    </nav>
+
+    
+  {% block content %}
+
+  <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+    <input type=file name=photo>
+    <input type="submit">
+</form>
+  <br>
+
+  <main>
+    <div class="outerbox">
+      <div class="imagebox">
+          <!-- fig caption ??  -->
+          <!-- <a href="{url "uploads/images"></a> -->
+      </div>
+      <div class="title">
+          <h5 class="card-title">{{ food_item }}</h5>
+      </div>
+      <div class="ingredients-textbox" aria-placeholder="recipe / ingredients">
+          <p class="card-text">{% for instruction in instructions %}
+                    {{ instruction['step'] }}
+                {% endfor %}
+          </p>
+      </div>
+      <div class="recipe-textbox" aria-placeholder="recipe / ingredients">
+          <p class="card-text">{% for ingredient in ingredients %}
+                    {{ ingredient['original'] }} </br>
+                {% endfor %}
+          </p>
+      </div>
+  </div>
+  </main>
+    {% endblock %}
+
+  </body>

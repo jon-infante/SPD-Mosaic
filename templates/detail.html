@@ -38,12 +38,17 @@
 
       <div class="right-side">
         <div class="ingredients">
-          {{ stuff.ingredients }}
-          
+          <h2>Ingredients</h2>
+          {% for item in stuff.ingredients %}
+            <li>{{ item }}</li>
+          {% endfor %}
+
         </div>
         <div class="recipe">
-          {{ stuff.recipe }}
-
+          <h2>Recipe</h2>
+          {% for step in stuff.recipe %}
+            <li>{{ step }}</li>
+          {% endfor %}
         </div>
       </div>
     
