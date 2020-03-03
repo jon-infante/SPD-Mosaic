@@ -40,30 +40,47 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="env/key.json"
 # Retrieves raw scores
 app = Flask(__name__)
 
+photos = UploadSet('photos', IMAGES)
 
-##### GOOGLE VISION API #####
-url = 'https://vision.googleapis.com/v1/images:annotate?'
-payload = open("google_vision.json")
-headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
-params = {
-    'key': GOOGLE_API_KEY
-    }
-r = requests.post(url, data=payload, headers=headers, params=params)
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
+configure_uploads(app, photos)
 
-labels = ['Food', 'Junk food', 'Dish', 'Cuisine', 'Fast food', 'Ingredient', 'Meat', 'Produce',
-'Dessert', 'Frozen dessert', 'Baked goods', 'Comfort food', 'Staple food', 'Recipe', 'Italian food',
-'Vegetarian food', 'American food', 'Vegetable', 'Plant', 'Natural foods', 'Fruit', 'Superfood',
-'Red', 'Banana family', 'Yellow', 'Citrus', 'Citric acid', 'Side dish', 'Local food', 'Juice',
-'Drink', 'Orange drink', 'Breakfast', 'Meal', 'Lunch', 'Dinner', 'Bilberry', 'Hendl', 'Kai yang'
-'Roasting', 'Green', 'Leaf', 'Corn kernels', 'Animal fat', 'Crocus', 'Flower', 'Nut', 'Leaf vegetable',
-'Herb', 'Grass']
+def detect_labels(path):
+    """Detects labels in the file."""
+    client = vision.ImageAnnotatorClient()
 
-# print(r.json())
-#This returns the first label/tag based on topicality/closeness of what the image looks like
-if r.json()['responses'][0]['labelAnnotations'][0]['description'] not in labels:
-    food_item = r.json()['responses'][0]['labelAnnotations'][0]['description']
+    with io.open(path, 'rb') as image_file:
+        content = image_file.read()
 
-print(food_item)
+    image = types.Image(content=content)
+
+    response = client.label_detection(image=image)
+    return response.label_annotations
+
+food_item = "cumberland sausage"
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST' and 'photo' in request.files:
+
+        filename = photos.save(request.files['photo'])
+        full_path = os.path.join(app.config['UPLOADED_PHOTOS_DEST'], filename)
+
+        labels = detect_labels(full_path)
+
+        predictions = []
+
+        for label in labels:
+                predictions.append(label.description)  #make a list as print would only show up in terminal
+
+        food_item = predictions[0]  #make it a little more pretty with ','
+
+    else:
+        food_item = "nothing to predict.."
+
+    return render_template('favorites.html', food_item=food_item)
+
+
 
 ##### SPOONACULAR API #####
 url_s = 'https://api.spoonacular.com/recipes/findByIngredients'
@@ -74,7 +91,7 @@ params_s = {
     }
 s = requests.get(url_s, params=params_s)
 
-# print(s.json())
+print(s.json())
 id = s.json()[0]['id']
 
 url_s2 = f'https://api.spoonacular.com/recipes/{id}/analyzedInstructions'
@@ -93,10 +110,10 @@ ingredients = s_information.json()['extendedIngredients']
 # print(ingredients)
 
 
+
 @app.route('/')
 def landing_page():
     return render_template('index.html')
-
 
 @app.route('/food')
 def home_page():
@@ -122,40 +139,31 @@ def recipes_new():
 
 
 
-photos = UploadSet('photos', IMAGES)
 
-app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
-configure_uploads(app, photos)
+'''
 
-def detect_labels(path):
-    """Detects labels in the file."""
-    client = vision.ImageAnnotatorClient()
+##### GOOGLE VISION API #####
+url = 'https://vision.googleapis.com/v1/images:annotate?'
+payload = open("google_vision.json")
+headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
+params = {
+    'key': GOOGLE_API_KEY
+    }
+r = requests.post(url, data=payload, headers=headers, params=params)
 
-    with io.open(path, 'rb') as image_file:
-        content = image_file.read()
+labels = ['Food', 'Junk food', 'Dish', 'Cuisine', 'Fast food', 'Ingredient', 'Meat', 'Produce',
+'Dessert', 'Frozen dessert', 'Baked goods', 'Comfort food', 'Staple food', 'Recipe', 'Italian food',
+'Vegetarian food', 'American food', 'Vegetable', 'Plant', 'Natural foods', 'Fruit', 'Superfood',
+'Red', 'Banana family', 'Yellow', 'Citrus', 'Citric acid', 'Side dish', 'Local food', 'Juice',
+'Drink', 'Orange drink', 'Breakfast', 'Meal', 'Lunch', 'Dinner', 'Bilberry', 'Hendl', 'Kai yang'
+'Roasting', 'Green', 'Leaf', 'Corn kernels', 'Animal fat', 'Crocus', 'Flower', 'Nut', 'Leaf vegetable',
+'Herb', 'Grass']
 
-    image = types.Image(content=content)
+#print(r.json())
+#This returns the first label/tag based on topicality/closeness of what the image looks like
+if r.json()['responses'][0]['labelAnnotations'][0]['description'] not in labels:
+    food_item = r.json()['responses'][0]['labelAnnotations'][0]['description']
 
-    response = client.label_detection(image=image)
-    return response.label_annotations
+print(food_item)
 
-@app.route('/upload', methods=['GET', 'POST'])
-def upload():
-    if request.method == 'POST' and 'photo' in request.files:
-
-        filename = photos.save(request.files['photo'])
-        full_path = os.path.join(app.config['UPLOADED_PHOTOS_DEST'], filename)
-
-        labels = detect_labels(full_path)
-
-        predictions = []
-
-        for label in labels:
-                predictions.append(label.description)  #make a list as print would only show up in terminal
-
-        prediction_text = ", ".join(predictions)  #make it a little more pretty with ','
-    else:
-        prediction_text = "nothing to predict.."
-
-    return render_template('upload.html', prediction_text=prediction_text)
-
+'''

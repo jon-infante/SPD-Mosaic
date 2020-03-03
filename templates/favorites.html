@@ -29,12 +29,10 @@
     
   {% block content %}
 
-  <div class="form">
-    <form action="upload_photo" method="POST" enctype="multipart/form-data">
-      Upload File: <input type="file" name="file"><br>
-      <input type="submit" name="submit" value="Submit">
-    </form>
-  </div>
+  <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+    <input type=file name=photo>
+    <input type="submit">
+</form>
   <br>
 
 
@@ -44,7 +42,7 @@
           <!-- <a href="{url "uploads/images"></a> -->
       </div>
       <div class="title">
-          <h5 class="card-title">{{ stuff }}</h5>
+          <h5 class="card-title">{{ food_item }}</h5>
       </div>
       <div class="textbox" aria-placeholder="recipe / ingredients">
           <p class="card-text">{% for instruction in instructions %}
