@@ -29,23 +29,14 @@ Flask-WTF==0.14.2
 folium==0.10.0
 google-api-core==1.16.0
 google-auth==1.11.2
-<<<<<<< HEAD
-google-cloud-core==1.2.0
-google-cloud-storage==1.25.0
-=======
 google-cloud-bigquery==1.24.0
 google-cloud-core==1.3.0
 google-cloud-storage==1.26.0
->>>>>>> 2426f150b88a9ba189cce6cd503f843dd8f1b38e
 google-cloud-vision==0.41.0
 google-resumable-media==0.5.0
 googleapis-common-protos==1.51.0
 grpcio==1.26.0
-<<<<<<< HEAD
-gunicorn==20.0.4
-=======
 gunicorn==19.9.0
->>>>>>> 2426f150b88a9ba189cce6cd503f843dd8f1b38e
 idna==2.8
 importlib-metadata==0.23
 ipykernel==5.1.2
@@ -53,13 +44,6 @@ ipython==7.8.0
 ipython-genutils==0.2.0
 isort==4.3.21
 itsdangerous==1.1.0
-<<<<<<< HEAD
-Jinja2==2.11.0
-MarkupSafe==1.1.1
-protobuf==3.11.2
-pyasn1==0.4.8
-pyasn1-modules==0.2.8
-=======
 jedi==0.15.1
 Jinja2==2.11.1
 json5==0.8.5
@@ -108,7 +92,6 @@ pyparsing==2.4.2
 pyrsistent==0.15.4
 pytest==5.1.2
 python-dateutil==2.8.0
->>>>>>> 2426f150b88a9ba189cce6cd503f843dd8f1b38e
 python-dotenv==0.11.0
 pytz==2019.3
 pyzmq==18.1.0
@@ -126,9 +109,6 @@ traitlets==4.3.2
 typed-ast==1.4.0
 Unidecode==1.1.1
 urllib3==1.25.8
-<<<<<<< HEAD
-Werkzeug==0.16.1
-=======
 virtualenv==20.0.7
 virtualenv-clone==0.5.3
 wcwidth==0.1.7
@@ -137,4 +117,3 @@ Werkzeug==0.16.0
 wrapt==1.11.2
 WTForms==2.2.1
 zipp==0.6.0
->>>>>>> 2426f150b88a9ba189cce6cd503f843dd8f1b38e
