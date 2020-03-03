@@ -15,7 +15,7 @@ Click==7.0
 decorator==4.4.0
 defusedxml==0.6.0
 distlib==0.3.0
-Django==2.2.6
+Django==2.2.10
 djangorestframework==3.10.3
 docutils==0.15.2
 entrypoints==0.3
