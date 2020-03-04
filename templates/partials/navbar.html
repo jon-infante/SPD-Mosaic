@@ -1,0 +1,94 @@
+<style>
+
+a {
+  text-decoration: none;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu {
+  padding: 0 0 10px 0;
+  box-sizing: border-box;
+  clear: both;
+  overflow: hidden;
+}
+
+.menu-items {
+  float: right;
+  margin: 0;
+  font-family: sans-serif;
+  color: white;
+  font-weight: 600;
+}
+
+.menu-items .nav-link {
+  display: inline;
+  height: auto;
+  margin: 0;
+  float: left;
+}
+
+.menu-items .nav-link a {
+  position: relative;
+  display: block;
+  padding: 20px 15px;
+  text-transform: capitalize;
+  font-size: .9rem;
+  z-index: 2;
+  transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s cubic-bezier(0, .67, 1, .35) 0s;
+}
+
+.menu-items .nav-link a:hover {
+  color: rgba(255, 255, 255, .9);
+}
+
+.menu-items .nav-link a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: scaley(.1);
+  transform-origin: top;
+  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.5s cubic-bezier(.75, -0.5, 0, 1.75) 0s;
+  z-index: -1;
+}
+
+.menu-items .nav-link a:hover:after {
+  transform: scaley(1);
+}
+
+.menu-items .nav-link:first-child a:after {
+  background: #3498db;
+}
+
+.menu-items .nav-link:nth-child(2) a:after {
+  background: #ffd071;
+}
+
+.menu-items .nav-link:nth-child(3) a:after {
+  background: #f0776c;
+}
+
+.menu-items .nav-link:last-child a:after {
+  background: #1abc9c;
+}
+
+</style>
+
+
+<nav class="menu">
+    <ul class="menu-items">
+      <li class="nav-link"><a href="/">Home</a></li>
+      <li class="nav-link"><a href="/upload">Upload</a></li>
+      <li class="nav-link"><a href="#">about me</a></li>
+      <li class="nav-link"><a href="#">contact</a></li>
+    </ul>
+  </nav>

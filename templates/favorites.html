@@ -10,24 +10,11 @@
     <!-- Favorites page displays cards of all the favorited recipes -->
   </head>
 
-  <nav>
-    <div class="page_title">
-      <div>Favorites</div>
-    </div>
-
-    <div class='dropdown'>
-        <button class='dropbtn'>menu</button>
-        <div class="dropdown-content">
-            <a href="/favorites">Favorites</a>
-            <a href="/upload">Upload</a>
-            <a href="/settings">Settings</a>
-        </div>
-    </div>
-  </nav>
-
   <body>
     
   {% block content %}
+
+  {% include 'partials/navbar.html' %}
 
   <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
     <input type=file name=photo>
