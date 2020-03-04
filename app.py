@@ -95,7 +95,7 @@ def upload():
         predictions = []
 
         for label in labels:
-                predictions.append(label.description)  #make a list as print would only show up in terminal
+            predictions.append(label.description)  #make a list as print would only show up in terminal
 
         global food_item
         food_item = predictions[0]  #make it a little more pretty with ','
