@@ -1,13 +1,10 @@
 Click==7.0
 Flask==1.1.1
-<<<<<<< HEAD
 Flask-SQLAlchemy==2.4.0
-=======
 Flask-Bootstrap==3.3.7.1
 Flask-Compress==1.4.0
 Flask-Login==0.4.1
 Flask-Mail==0.9.1
->>>>>>> dev
 Flask-Uploads==0.2.1
 Flask-WTF==0.14.2
 future==0.16.0
