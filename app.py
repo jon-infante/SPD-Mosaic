@@ -16,7 +16,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
 
 from google.cloud.vision import types
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, send_from_directory
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="env/key.json"
 
@@ -64,7 +64,7 @@ if r.json()['responses'][0]['labelAnnotations'][0]['description'] not in labels:
 print(food_item)
 '''
 app = Flask(__name__)
-
+UPLOAD_FOLDER = '/Users/mtifak/Desktop/dev/Term-3/SPD-1.3/SPD-Mosaic/static/img'
 
 photos = UploadSet('photos', IMAGES)
 app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'

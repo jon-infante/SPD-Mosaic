@@ -38,21 +38,20 @@
   <main>
     <div class="outerbox">
       <div class="imagebox">
-          <!-- fig caption ??  -->
-          <!-- <a href="{url "uploads/images"></a> -->
+        <img src="https://spoonacular.com/recipeImages/{id}-200x200.jpg" alt="recipe image">
       </div>
       <div class="title">
           <h5 class="card-title">{{ food_item }}</h5>
       </div>
       <div class="ingredients-textbox" aria-placeholder="recipe / ingredients">
           <p class="card-text">{% for instruction in instructions %}
-                    {{ instruction['step'] }}
+                    <li>{{ instruction['step'] }}</li>
                 {% endfor %}
           </p>
       </div>
       <div class="recipe-textbox" aria-placeholder="recipe / ingredients">
           <p class="card-text">{% for ingredient in ingredients %}
-                    {{ ingredient['original'] }} </br>
+                    <li>{{ ingredient['original'] }}</li>
                 {% endfor %}
           </p>
       </div>
