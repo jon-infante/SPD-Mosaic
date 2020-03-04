@@ -16,9 +16,9 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
 
 from google.cloud.vision import types
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, send_from_directory
 from flask_uploads import UploadSet, configure_uploads, IMAGES
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="key.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="env/key.json"
 
 
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="env/key.json"
@@ -47,7 +47,6 @@ params = {
     'key': GOOGLE_API_KEY
     }
 r = requests.post(url, data=payload, headers=headers, params=params)
-
 labels = ['Food', 'Junk food', 'Dish', 'Cuisine', 'Fast food', 'Ingredient', 'Meat', 'Produce',
 'Dessert', 'Frozen dessert', 'Baked goods', 'Comfort food', 'Staple food', 'Recipe', 'Italian food',
 'Vegetarian food', 'American food', 'Vegetable', 'Plant', 'Natural foods', 'Fruit', 'Superfood',
@@ -55,16 +54,14 @@ labels = ['Food', 'Junk food', 'Dish', 'Cuisine', 'Fast food', 'Ingredient', 'Me
 'Drink', 'Orange drink', 'Breakfast', 'Meal', 'Lunch', 'Dinner', 'Bilberry', 'Hendl', 'Kai yang'
 'Roasting', 'Green', 'Leaf', 'Corn kernels', 'Animal fat', 'Crocus', 'Flower', 'Nut', 'Leaf vegetable',
 'Herb', 'Grass']
-
 #print(r.json())
 #This returns the first label/tag based on topicality/closeness of what the image looks like
 if r.json()['responses'][0]['labelAnnotations'][0]['description'] not in labels:
     food_item = r.json()['responses'][0]['labelAnnotations'][0]['description']
-
 print(food_item)
 '''
 app = Flask(__name__)
-
+UPLOAD_FOLDER = '/Users/mtifak/Desktop/dev/Term-3/SPD-1.3/SPD-Mosaic/static/img'
 
 photos = UploadSet('photos', IMAGES)
 app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
@@ -112,6 +109,7 @@ def upload():
         print(s.json())
         id = s.json()[0]['id']
 
+
         url_s2 = f'https://api.spoonacular.com/recipes/{id}/analyzedInstructions'
         params_s2 = {
             'apiKey': SPOONACULAR_API_KEY,
@@ -119,6 +117,8 @@ def upload():
         s_recipe = requests.get(url_s2, params=params_s2)
         # print(s_recipe.json())
         instructions = s_recipe.json()[0]['steps']
+
+
         url_s3 = f'https://api.spoonacular.com/recipes/{id}/information'
         params_s3 = {
             'apiKey': SPOONACULAR_API_KEY,
@@ -128,7 +128,7 @@ def upload():
         # print(ingredients)
 
     else:
-        food_item = "cumberland sausage"
+        food_item = "Cumberland Sausage"
 
         ##### SPOONACULAR API #####
         url_s = 'https://api.spoonacular.com/recipes/findByIngredients'
@@ -138,30 +138,52 @@ def upload():
             'ingredients': food_item
             }
         s = requests.get(url_s, params=params_s)
-
         print(s.json())
         id = s.json()[0]['id']
+
 
         url_s2 = f'https://api.spoonacular.com/recipes/{id}/analyzedInstructions'
         params_s2 = {
             'apiKey': SPOONACULAR_API_KEY,
             }
         s_recipe = requests.get(url_s2, params=params_s2)
-        # print(s_recipe.json())
+        print(s_recipe.json())
         instructions = s_recipe.json()[0]['steps']
+
+
         url_s3 = f'https://api.spoonacular.com/recipes/{id}/information'
         params_s3 = {
             'apiKey': SPOONACULAR_API_KEY,
             }
         s_information = requests.get(url_s3, params=params_s3)
         ingredients = s_information.json()['extendedIngredients']
-        # print(ingredients)
+        print(ingredients)
 
     return render_template('favorites.html', stuff=food_item, instructions=instructions, ingredients=ingredients)
 
 @app.route('/')
 def landing_page():
     return render_template('index.html')
+
+
+@app.route('/recipe')
+def recipe():
+
+    search_term = request.args.get('user_input')
+
+    params = {
+        'query': search_term,
+        'apiKey': SPOONACULAR_API_KEY,
+        'number': 6
+    }
+
+    url = "https://api.spoonacular.com/recipes/search"
+
+    r = requests.get(url, params=params)
+    if r.status_code == 200:
+        json_recipes = json.loads(r.content)
+        recipes = json_recipes['results']
+        return render_template('meals.html', recipes=recipes)
 
 
 @app.route('/recipes', methods=['POST'])
