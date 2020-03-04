@@ -1,8 +1,12 @@
 
 ## [RecipEat Heroku App Link](https://recipeat-01.herokuapp.com/)
 
-Wireframes, ERD: 
+Pitch Deck, Wireframes, ERD: 
 
+Pitch Deck:
+https://docs.google.com/presentation/d/1uJQCZGxrh_PQjqgpKbTsMt0ewVEHewRnhc8IYejEWGY/edit?usp=sharing
+
+Wireframes:
 <h2>Step 1: Select upload</h2>
 <img src="readme_imgs/menu.png" alt="menu"><br>
 
@@ -18,4 +22,5 @@ Wireframes, ERD:
 
 https://drive.google.com/file/d/1Ial-Anx_CLtHhpp42aIxpHDluR2qZoQr/view?usp=sharing
 
+ERD: 
 <img src="readme_imgs/ERD-mosaic.png" alt="erd"><br>
