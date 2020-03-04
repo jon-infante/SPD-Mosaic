@@ -112,6 +112,7 @@ def upload():
         print(s.json())
         id = s.json()[0]['id']
 
+
         url_s2 = f'https://api.spoonacular.com/recipes/{id}/analyzedInstructions'
         params_s2 = {
             'apiKey': SPOONACULAR_API_KEY,
@@ -119,6 +120,8 @@ def upload():
         s_recipe = requests.get(url_s2, params=params_s2)
         # print(s_recipe.json())
         instructions = s_recipe.json()[0]['steps']
+        
+        
         url_s3 = f'https://api.spoonacular.com/recipes/{id}/information'
         params_s3 = {
             'apiKey': SPOONACULAR_API_KEY,
@@ -128,7 +131,7 @@ def upload():
         # print(ingredients)
 
     else:
-        food_item = "cumberland sausage"
+        food_item = "Cumberland Sausage"
 
         ##### SPOONACULAR API #####
         url_s = 'https://api.spoonacular.com/recipes/findByIngredients'
@@ -138,24 +141,26 @@ def upload():
             'ingredients': food_item
             }
         s = requests.get(url_s, params=params_s)
-
         print(s.json())
         id = s.json()[0]['id']
+
 
         url_s2 = f'https://api.spoonacular.com/recipes/{id}/analyzedInstructions'
         params_s2 = {
             'apiKey': SPOONACULAR_API_KEY,
             }
         s_recipe = requests.get(url_s2, params=params_s2)
-        # print(s_recipe.json())
+        print(s_recipe.json())
         instructions = s_recipe.json()[0]['steps']
+
+
         url_s3 = f'https://api.spoonacular.com/recipes/{id}/information'
         params_s3 = {
             'apiKey': SPOONACULAR_API_KEY,
             }
         s_information = requests.get(url_s3, params=params_s3)
         ingredients = s_information.json()['extendedIngredients']
-        # print(ingredients)
+        print(ingredients)
 
     return render_template('favorites.html', stuff=food_item, instructions=instructions, ingredients=ingredients)
 

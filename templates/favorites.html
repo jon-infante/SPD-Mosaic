@@ -1,31 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>RecipEats</title>
-    <link href="/static/favorites_style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <link href="{{ url_for('static',filename='styles/favorites_style.css') }}" rel="stylesheet">
 
     <!-- Favorites page displays cards of all the favorited recipes -->
   </head>
 
+  <nav>
+    <div class="page_title">
+      <div>Favorites</div>
+    </div>
+
+    <div class='dropdown'>
+        <button class='dropbtn'>menu</button>
+        <div class="dropdown-content">
+            <a href="/favorites">Favorites</a>
+            <a href="/upload">Upload</a>
+            <a href="/settings">Settings</a>
+        </div>
+    </div>
+  </nav>
+
   <body>
-
-    <nav>
-      <div class="page_title">
-        <div>Favorites</div>
-      </div>
-
-      <div class='dropdown'>
-          <button class='dropbtn'>menu</button>
-          <div class="dropdown-content">
-              <a href="/favorites">Favorites</a>
-              <a href="/upload">Upload</a>
-              <a href="/settings">Settings</a>
-          </div>
-      </div>
-    </nav>
-
     
   {% block content %}
 
@@ -35,28 +35,53 @@
 </form>
   <br>
 
-  <main>
-    <div class="outerbox">
-      <div class="imagebox">
-        <img src="https://spoonacular.com/recipeImages/{id}-200x200.jpg" alt="recipe image">
-      </div>
-      <div class="title">
-          <h5 class="card-title">{{ food_item }}</h5>
-      </div>
-      <div class="ingredients-textbox" aria-placeholder="recipe / ingredients">
-          <p class="card-text">{% for instruction in instructions %}
-                    <li>{{ instruction['step'] }}</li>
+    <div id="stack1" class="card-container start">
+      <section id="card1" class="card card1">
+          <h1>{{ stuff }}</h1>
+        <a href="#">
+          <!--<img src="https://spoonacular.com/cdn/recipeImages/{{ food_item }}-200x200.jpg" alt="recipe image">-->
+          <img src="http://www.placehold.it/500x200" />
+          </a>
+
+          <p>This was the first period where evidence of dinosaurs is present.</p>
+      </section>
+
+
+      <section id="card2" class="card card2">
+          <h1>Ingredients</h1>
+        <a href="#">
+              <img src="http://www.placehold.it/500x200" />
+          </a>
+
+          <p>{% for ingredient in ingredients %}
+            <li>{{ ingredient['original'] }}</li>
                 {% endfor %}
           </p>
-      </div>
-      <div class="recipe-textbox" aria-placeholder="recipe / ingredients">
-          <p class="card-text">{% for ingredient in ingredients %}
-                    <li>{{ ingredient['original'] }}</li>
-                {% endfor %}
+      </section>
+
+
+      <section id="card3" class="card card3">
+          <h1>Directions to Prepare</h1>
+        <a href="#">
+              <img src="http://www.placehold.it/500x200" />
+          </a>
+
+          <p>{% for instruction in instructions %}
+            <li>{{ instruction['step'] }}</li>
+
+            {% endfor %}
           </p>
-      </div>
+      </section>
   </div>
+
+
+
   </main>
     {% endblock %}
 
   </body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://s.cdpn.io/44759/jquery.hammer.min.js'></script><script type="text/javascript"
+src="{{ url_for('static', filename='js/card.js') }}"></script>
+</html>
+
