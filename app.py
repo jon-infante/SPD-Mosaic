@@ -18,7 +18,7 @@ SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
 from google.cloud.vision import types
 from flask import Flask, render_template, request
 from flask_uploads import UploadSet, configure_uploads, IMAGES
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="env/key.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="key.json"
 
 
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="env/key.json"
